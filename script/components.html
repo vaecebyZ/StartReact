@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script type="text/babel">
+    // 函数
+    function Button(val){
+        return <button>23232</button>
+    }
+    // 类
+    class Bottons extends React.Component{
+        render(){
+            return <><button>类型渲按钮</button> <button>类型渲按钮</button></>
+        }
+    }
+   
+    // render之后会覆盖之前的代码
+    const bt =  new Botton()
+    ReactDOM.render(bt.render(),root)
+    // 语法糖
+    // 类声明
+    ReactDOM.render(<Bottons />,root)
+    ReactDOM.render(<Button />,root)
+    let more = (<div>
+        <Button></Button>
+        <Button></Button>
+        <Button></Button>
+        <Button></Button>
+    </div>)
+    ReactDOM.render(more,root)
+// </script>
+
+</html>
