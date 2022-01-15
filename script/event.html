@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script type="text/babel">
+class Button extends React.Component{
+    render() {
+        // bind绑定新的this
+        // <button onClick={this._click.bind(this)}>点击事件</button>
+        return <> <button onClick={()=>this._click()}>点击事件1</button> <button onClick={this._click1}>点击事件</button> </>
+    }
+    name = 'Sanka'
+    _click1 = ()=>{
+        console.log('点击事件'+this.name);
+    }
+    _click(){
+        console.log('点击事件'+this.name);
+    }
+}
+class Input extends React.Component{
+    render(h) {
+        // 注意不能打（）否则会再执行时候立即调用
+        return <> <input onBlur={this._blur} />  </>    
+    }
+    _blur(){
+        console.log('失去焦点');
+    }
+}
+ReactDOM.render(<><Button /><Input/></>,root)
+</script>
+</html>
