@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<!-- 使用balbel编译 -->
+<script type="text/babel">
+    class Son extends React.Component{
+        list  = [{name:'cxk',
+    hb:['c','t','r','l','music']},{name:'Sanka',
+    hb:['anime','code','music']}]
+        render(props){
+            return <>
+            <span>我是子组件{this.props.show}</span>{this.showList()}</>
+        }
+        showList(){
+            return this.list.map((user,index)=><div key={index}><h1 >{user.name}</h1><del>{user.hb.join(',')}</del></div>)
+        }
+
+        componentDidMount() {
+            console.log('出来了');
+        }
+
+        componentWillUnmount() {
+            console.log('gg了');
+        }
+    }
+    class Button extends React.Component{
+            state={
+                num:0,
+                show:false
+            };
+            render(){
+                return <div>  {this.state.show ? <Son/> : '啥都没有' } <button onClick={this.showChange}>切换</button><h1>当前数据{this.state.num}</h1><button onClick={this._add}>+</button></div>
+            }
+            _add=()=>{
+                this.setState({num:this.state.num+1})
+            } 
+            showChange=()=>{
+               let isShow = this.state.show ? false : true
+                this.setState({show: isShow })
+            }
+        }
+    ReactDOM.render(<Button/>,root)
+</script>
+
+</html>
